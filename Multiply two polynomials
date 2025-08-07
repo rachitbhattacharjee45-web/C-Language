@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    int degree1, degree2;
+    int poly1[100] = {0}, poly2[100] = {0};
+    int result[200] = {0};
+    printf("Enter degree of first polynomial: ");
+    scanf("%d", &degree1);
+    printf("Enter coefficients for first polynomial (from x^0 to x^%d):\n", degree1);
+    for (int i = 0; i <= degree1; i++) {
+        scanf("%d", &poly1[i]);
+    }
+    printf("Enter degree of second polynomial: ");
+    scanf("%d", &degree2);
+    printf("Enter coefficients for second polynomial (from x^0 to x^%d):\n", degree2);
+    for (int i = 0; i <= degree2; i++) {
+        scanf("%d", &poly2[i]);
+    }
+    for (int i = 0; i <= degree1 + degree2; i++) {
+        result[i] = 0;
+    }
+    for (int i = 0; i <= degree1; i++) {
+        for (int j = 0; j <= degree2; j++) {
+            result[i + j] += poly1[i] * poly2[j];
+        }
+    }
+    printf("Resultant polynomial after multiplication:\n");
+    for (int i = degree1 + degree2; i >= 0; i--) {
+        if (result[i] != 0) {
+            if (i == 0)
+                printf("%d", result[i]);
+            else
+                printf("%dx^%d + ", result[i], i);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
