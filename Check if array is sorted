@@ -11,8 +11,10 @@ int main() {
     int arr[] = {1, 2, 3, 4, 5};
     int size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("The array is %ssorted in ascending order.\n",
-           isSortedAscending(arr, size) ? "" : "NOT ");
+    if (isSortedAscending(arr, size))
+        printf("The array is sorted in ascending order.\n");
+    else
+        printf("The array is NOT sorted in ascending order.\n");
 
     return 0;
 }
